@@ -130,7 +130,7 @@ export default class GapController {
     // we may just have to "nudge" the playlist as the browser decoding/rendering engine
     // needs to cross some sort of threshold covering all source-buffers content
     // to start playing properly.
-    if (bufferInfo.len > config.maxBufferHole &&
+    if (bufferInfo.len <= config.maxBufferHole &&
       stalledDurationMs > config.highBufferWatchdogPeriod * 1000) {
       logger.warn('Trying to nudge playhead over buffer-hole');
       // Try to nudge currentTime over a buffer hole if we've been stalling for the configured amount of seconds
